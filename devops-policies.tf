@@ -32,6 +32,7 @@ locals {
 
 
 resource "oci_identity_dynamic_group" "devops_coderepo_dg" {
+  count		 = 0
   provider       = oci.home_region
   name           = "CodeReposDynamicGroup-${random_id.tag.hex}"
   description    = "DevOps code repository dynamic group"
@@ -41,6 +42,7 @@ resource "oci_identity_dynamic_group" "devops_coderepo_dg" {
 
 
 resource "oci_identity_dynamic_group" "devops_build_dg" {
+  count          = 0
   provider       = oci.home_region
   name           = "MyDynamicGroup-${random_id.tag.hex}"
   description    = "DevOps repository build pipeline dynamic group"
@@ -51,6 +53,7 @@ resource "oci_identity_dynamic_group" "devops_build_dg" {
 
 
 resource "oci_identity_policy" "devopsrootpolicy" {
+  count          = 0
   provider       = oci.home_region
   name           = "devops-root-policies-${random_id.tag.hex}"
   description    = "policy created for root compartment"
